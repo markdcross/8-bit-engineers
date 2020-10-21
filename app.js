@@ -13,9 +13,18 @@ const render = require('./lib/htmlRenderer');
 const teamArr = [];
 const idArr = [];
 
-// Write code to use inquirer to gather information about the development team members,
-// and to create objects for each team member (using the correct classes as blueprints!)
+// Everything is wrapped in the runApp function so that it will continue to repeat until escaped
 const runApp = () => {
+    // Define the function to output and render the generated team to the team.html file (called later)
+    const outputTeam = () => {
+        // Create the output directory if the output path doesn't exist
+        if (!fs.existsSync(OUTPUT_DIR)) {
+            fs.mkdirSync(OUTPUT_DIR);
+        }
+        fs.writeFileSync(outputPath, render(teamArr), 'utf-8');
+    };
+
+    // First step, create the manager of the team
     const createManager = () => {
         console.log("Welcome! Let's build your engineering team.");
         inquirer
@@ -68,6 +77,8 @@ const runApp = () => {
                     },
                 },
             ])
+
+            // Once the responses are collected, create a new Manager object
             .then((answers) => {
                 const manager = new Manager(
                     answers.managerName,
@@ -75,8 +86,14 @@ const runApp = () => {
                     answers.managerEmail,
                     answers.managerOffice
                 );
+
+                // Push the new Manager object to the team array
                 teamArr.push(manager);
+
+                // Push the ID number to an array so that we can validate that all ID numbers are unique
                 idArr.push(answers.managerID);
+
+                // Run the build team function to build the rest of the team
                 buildTeam();
             });
     };
@@ -92,16 +109,22 @@ const runApp = () => {
                 },
             ])
             .then((input) => {
+                // Create an Engineer
                 if (input.addTeammate === 'Engineer') {
                     createEngineer();
+
+                    // Create an Intern
                 } else if (input.addTeammate === 'Intern') {
                     createIntern();
+
+                    // Or, escape the function
                 } else {
                     outputTeam();
                 }
             });
     };
 
+    // If engineer is selected from the buildTeam function, let's build an engineer!
     function createEngineer() {
         inquirer
             .prompt([
@@ -156,6 +179,7 @@ const runApp = () => {
                     },
                 },
             ])
+            // Once the responses are collected, create a new Engineer object
             .then((answers) => {
                 const engineer = new Engineer(
                     answers.engineerName,
@@ -163,12 +187,19 @@ const runApp = () => {
                     answers.engineerEmail,
                     answers.engineerGithub
                 );
+
+                // Push the new Engineer object to the team array
                 teamArr.push(engineer);
+
+                // Push the ID number to an array
                 idArr.push(answers.engineerId);
+
+                // Run the build team function again to build the rest of the team
                 buildTeam();
             });
     }
 
+    // If intern is selected from the buildTeam function, let's build an intern!
     function createIntern() {
         inquirer
             .prompt([
@@ -223,6 +254,7 @@ const runApp = () => {
                     },
                 },
             ])
+            // Once the responses are collected, create a new Intern object
             .then((answers) => {
                 const intern = new Intern(
                     answers.internName,
@@ -230,11 +262,18 @@ const runApp = () => {
                     answers.internEmail,
                     answers.internSchool
                 );
+                // Push the new Intern object to the team array
                 teamArr.push(intern);
+                // Push the ID number to an array
                 idArr.push(answers.internId);
+                // Run the build team function again to build the rest of the team
                 buildTeam();
             });
     }
+
+    // Loop through again to create a new team
     createManager();
 };
+
+// Runs the whole shindig
 runApp();
