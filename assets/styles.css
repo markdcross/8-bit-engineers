@@ -1,0 +1,15 @@
+body {
+    background-image: url(./background2.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.team-area {
+    margin-top: 35%;
+}
+
+.jumbotron {
+    font-family: 'Press Start 2P', cursive;
+    background-color: #1b1b1b;
+    color: white;
+}
