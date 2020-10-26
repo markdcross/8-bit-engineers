@@ -5,11 +5,16 @@
     </div>
     <div class="card-body">
         <ul class="list-group">
-            <li class="list-group-item">ID: {{ id }}</li>
             <li class="list-group-item">
-                Email: <a href="mailto:{{ email }}">{{ email }}</a>
+                <i class="fas fa-id-badge"></i>: {{ id }}
             </li>
-            <li class="list-group-item">Office number: {{ officeNumber }}</li>
+            <li class="list-group-item">
+                <i class="fas fa-envelope-open-text"></i>:
+                <a href="mailto:{{ email }}">{{ email }}</a>
+            </li>
+            <li class="list-group-item">
+                <i class="fas fa-building"></i>: {{ officeNumber }}
+            </li>
         </ul>
     </div>
 </div>
