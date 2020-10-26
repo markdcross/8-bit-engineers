@@ -45,8 +45,8 @@ const runApp = () => {
                     name: 'managerID',
                     message: 'What is their ID number?',
                     validate: (answer) => {
-                        const pass = answer.match(/^[1-9]\d*$/);
-                        if (pass) {
+                        const idNum = answer.match(/^[1-9]\d*$/);
+                        if (idNum) {
                             return true;
                         }
                         return 'Please provide a valid ID number.';
@@ -57,8 +57,8 @@ const runApp = () => {
                     name: 'managerEmail',
                     message: 'What is their email address?',
                     validate: (answer) => {
-                        const pass = answer.match(/\S+@\S+\.\S+/);
-                        if (pass) {
+                        const mgrEmail = answer.match(/\S+@\S+\.\S+/);
+                        if (mgrEmail) {
                             return true;
                         }
                         return 'Please enter a valid email address.';
@@ -69,8 +69,8 @@ const runApp = () => {
                     name: 'managerOffice',
                     message: 'What is their office number?',
                     validate: (answer) => {
-                        const pass = answer.match(/^[1-9]\d*$/);
-                        if (pass) {
+                        const mgrOffice = answer.match(/^[1-9]\d*$/);
+                        if (mgrOffice) {
                             return true;
                         }
                         return 'Please provide a valid office number.';
@@ -144,8 +144,8 @@ const runApp = () => {
                     name: 'engineerId',
                     message: 'What is their ID number?',
                     validate: (answer) => {
-                        const pass = answer.match(/^[1-9]\d*$/);
-                        if (pass) {
+                        const engId = answer.match(/^[1-9]\d*$/);
+                        if (engId) {
                             if (idArr.includes(answer)) {
                                 return 'This ID is already in use.';
                             } else {
@@ -160,8 +160,8 @@ const runApp = () => {
                     name: 'engineerEmail',
                     message: 'What is their email?',
                     validate: (answer) => {
-                        const pass = answer.match(/\S+@\S+\.\S+/);
-                        if (pass) {
+                        const engEmail = answer.match(/\S+@\S+\.\S+/);
+                        if (engEmail) {
                             return true;
                         }
                         return 'Please enter a valid email address.';
@@ -219,8 +219,8 @@ const runApp = () => {
                     name: 'internId',
                     message: 'What is their ID?',
                     validate: (answer) => {
-                        const pass = answer.match(/^[1-9]\d*$/);
-                        if (pass) {
+                        const intId = answer.match(/^[1-9]\d*$/);
+                        if (intId) {
                             if (idArr.includes(answer)) {
                                 return 'This ID is already in use.';
                             } else {
@@ -235,8 +235,8 @@ const runApp = () => {
                     name: 'internEmail',
                     message: 'What is their email?',
                     validate: (answer) => {
-                        const pass = answer.match(/\S+@\S+\.\S+/);
-                        if (pass) {
+                        const intEmail = answer.match(/\S+@\S+\.\S+/);
+                        if (intEmail) {
                             return true;
                         }
                         return 'Please enter a valid email address.';
