@@ -27,6 +27,14 @@ so that I have quick access to emails and github profiles
 2. Install dependencies `npm i`
 
 ## Usage
+#### Technology:
+* Html
+* CSS
+* JavaScript
+* Node.js
+* Jest
+
+#### Screenshots:
 
 [Usage video](https://drive.google.com/file/d/1z-M7Gwj19qR_hRslqVB_WobjmDdNONF1/view)
 
